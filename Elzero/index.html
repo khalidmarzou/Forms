@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Store</title>
+  </head>
+  <body>
+    <div>
+      <h1>Book Store</h1>
+      <p>This is My Book Store, Welcome</p>
+    </div>
+    <form action="" method="POST">
+      <!--khalid.php when u want to send form information after submit if empty send data to same page-->
+      <div>
+        <label for="">User Name :</label>
+        <input type="text" required placeholder="User-Name" name="name" />
+      </div>
+      <div>
+        <label for="">Subject :</label>
+        <input type="text" name="sub" />
+      </div>
+      <div>
+        <label for="">Email :</label>
+        <input
+          type="email"
+          value="khalidmarzoug9@gmail.com"
+          required
+          name="mail"
+        />
+        <!--auto validation of email-->
+      </div>
+      <div>
+        <label for="">Password :</label>
+        <input type="password" required name="pass" />
+      </div>
+      <input list="programming" name="prog" />
+      <datalist id="programming">
+        <option value="C" />
+        <option value="Python" />
+        <option value="C#" />
+        <option value="C++" />
+        <option value="HTML" />
+        <option value="CSS" />
+      </datalist>
+
+      <input type="submit" value="save" />
+      <!--name attr give all the inputs a name in query String-->
+      <!--http://127.0.0.1:5500/Forms/Elzero/khalid.php?name=khalid+marzoug&sub=rien&mail=khalidmarzoug9%40gmail.com&pass=Cn1457369-->
+      <!--
+        khalid.php? ==> name of file when we send data in back End
+        name=khalid+marzoug ==> name = attr user name + is a space
+        & it's and
+        % is @
+        and the password too
+        u can see that in Network in the Browser Headers Query String
+
+        post method does not send information in the url
+
+        ReadOnly send with infos
+        deasebled not send with inofs
+        autofocuss
+        minlength
+        maxlength
+        optiongroup label="djsjkdnk" in select
+        multiple
+        selected in select like checked in radio and checkbox
+        noValidate , remove validation from form
+        we can add target att form
+      -->
+    </form>
+  </body>
+</html>

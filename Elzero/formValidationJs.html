@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation With Js</title>
+  </head>
+  <body>
+    <form action="">
+      <input type="text" name="username" placeholder="Max 10 chars Only" />
+      <input type="text" name="age" placeholder="Cant Be Emplty" />
+      <input type="submit" value="Submit Data" />
+    </form>
+    <a href="https://google.com/">Google</a>
+    <script>
+      /*
+        DOM Events
+            -- Validate Form Practice
+            -- Prevent Default
+        */
+
+      let username = document.querySelector('[name = "username"]');
+      let age = document.querySelector('[name="age"]');
+      document.forms[0].onsubmit = function (e) {
+        let userValid = false;
+        let ageValid = false;
+        if (username.value !== "" && username.value.length <= 10) {
+          userValid = true;
+        }
+        if (age.value !== "") {
+          ageValid = true;
+        }
+        userValid === false || ageValid === false ? e.preventDefault() : null;
+      };
+      document.links[0].onclick = function (event) {
+        console.log(event);
+        event.preventDefault();
+      };
+    </script>
+  </body>
+</html>
