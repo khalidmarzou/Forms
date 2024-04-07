@@ -168,6 +168,10 @@ function displayAllStagiaires(e) {
   e.preventDefault();
   tbodyShowAll.innerHTML = "";
   stagiaires.forEach((stagiaire, index) => {
+    let noteObject = JSON.stringify(stagiairesNotes[index].notes).match(
+      /"[a-z]+"\s*:\s*\d+/gi
+    );
+    noteObject === null ? (noteObject = ["No matches found"]) : null;
     tbodyShowAll.innerHTML += `<tr>
                                     <td class="border border-slate-600">${
                                       stagiaire.cine
@@ -178,11 +182,9 @@ function displayAllStagiaires(e) {
                                     <td class="border border-slate-600">${
                                       stagiaire.branch
                                     }</td>
-                                    <td class="border border-slate-600">${JSON.stringify(
-                                      stagiairesNotes[index].notes
-                                    )
-                                      .match(/"[a-z]+"\s*:\s*\d+/gi)
-                                      .join("<br />")}</td>
+                                    <td class="border border-slate-600">${noteObject.join(
+                                      "<br />"
+                                    )}</td>
                                     <td class="border border-slate-600">${(
                                       Object.keys(
                                         stagiairesNotes[index].notes
