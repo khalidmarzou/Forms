@@ -164,11 +164,44 @@ function sendData(e) {
 }
 
 // show all stagiaires :
-function displayAllStagiaires() {}
+function displayAllStagiaires(e) {
+  e.preventDefault();
+  tbodyShowAll.innerHTML = "";
+  stagiaires.forEach((stagiaire, index) => {
+    tbodyShowAll.innerHTML += `<tr>
+                                    <td class="border border-slate-600">${
+                                      stagiaire.cine
+                                    }</td>
+                                    <td class="border border-slate-600">${
+                                      stagiaire.name
+                                    }</td>
+                                    <td class="border border-slate-600">${
+                                      stagiaire.branch
+                                    }</td>
+                                    <td class="border border-slate-600">${JSON.stringify(
+                                      stagiairesNotes[index].notes
+                                    )
+                                      .match(/"[a-z]+"\s*:\s*\d+/gi)
+                                      .join("<br />")}</td>
+                                    <td class="border border-slate-600">${(
+                                      Object.keys(
+                                        stagiairesNotes[index].notes
+                                      ).reduce(
+                                        (acc, v) =>
+                                          acc + stagiairesNotes[index].notes[v],
+                                        0
+                                      ) /
+                                      Object.keys(stagiairesNotes[index].notes)
+                                        .length
+                                    ).toFixed(2)}</td>
+                                </tr>`;
+  });
+}
 
 // test with showAll btn :
 const btnShowAll = document.getElementById("btnShowAll");
-btnShowAll.addEventListener("click", displayAllStagiaires);
+const tbodyShowAll = document.getElementsByTagName("tbody")[1];
+btnShowAll.addEventListener("click", (e) => displayAllStagiaires(e));
 
 const btnSearch = document.getElementById("search");
 const searchZone = document.getElementById("searchZone");
@@ -183,8 +216,9 @@ modulesSelect.addEventListener("change", () => {
   noteInput.value = stagiaireSelected.notes[modulesSelect.value];
 });
 
-btnSearch.addEventListener("click", editStagiaire);
-function editStagiaire() {
+btnSearch.addEventListener("click", (e) => editStagiaire(e));
+function editStagiaire(e) {
+  e.preventDefault();
   modulesSelect.innerHTML = '<option value="">Select Module</option>';
   const cineSelected = searchZone.value;
   const stagiaire = stagiaires.find((str) => str.cine === cineSelected);
@@ -266,3 +300,15 @@ function sendStagiaresAndNotesToServer() {
   };
   xhr.send(dataJSON);
 }
+
+// vider data Base :
+const btnVider = document.getElementById("btnVider");
+btnVider.addEventListener("click", (e) => {
+  e.preventDefault();
+  stagiaires = [];
+  stagiairesNotes = [];
+  sendStagiaresAndNotesToServer();
+  tbodyEdit.innerHTML = "";
+  tbodyShowAll.innerHTML = "";
+  Array.from(document.forms).forEach((form) => form.reset());
+});
