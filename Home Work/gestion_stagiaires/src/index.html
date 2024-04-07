@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./output.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Gestion Stagiares</title>
+  </head>
+  <body
+    class="h-[97vh] p-1 m-1 flex flex-col items-center justify-center border gap-2 font-mono"
+  >
+    <h1 class="sm:text-4xl font-bold">Gestions des Stagiaires</h1>
+    <header class="border border-slate-600 sm:w-[80%] w-[95%] rounded p-5">
+      <h3 class="text-blue-900 font-bold sm:text-sm">
+        Informations Stagiaire :
+      </h3>
+      <form
+        action="#"
+        method=""
+        class="flex justify-between sm:flex-row flex-col gap-3"
+      >
+        <div class="flex flex-col sm:w-[45%] w-[100%] items-start">
+          <label for="cine">CINE :</label>
+          <input
+            type="text"
+            id="cine"
+            placeholder="EX000000"
+            class="border-b-2 border-blue-600 px-2 focus:outline-none hover:bg-slate-200 cursor-pointer"
+          />
+          <div class="h-[20px] text-red-500 text-sm"></div>
+          <label for="name">Full Name :</label>
+          <input
+            type="text"
+            id="name"
+            placeholder="FirstName Second"
+            class="border-b-2 border-blue-600 px-2 focus:outline-none hover:bg-slate-200 cursor-pointer"
+          />
+          <div class="h-[20px] text-red-500 text-sm"></div>
+          <label for="gender">Gender :</label>
+          <div>
+            <input type="radio" name="gender" id="male" />
+            <label for="male"> Male</label>
+          </div>
+          <div>
+            <input type="radio" name="gender" id="female" /><label for="female">
+              Female</label
+            >
+          </div>
+          <div class="h-[20px] text-red-500 text-sm"></div>
+        </div>
+        <div
+          class="flex flex-col sm:w-[50%] w-[100%] items-start sm:border-l-2 sm:px-2 relative"
+        >
+          <label for="branch">Branch :</label>
+          <select
+            name="branch"
+            id="branch"
+            class="border-2 p-2 rounded border-blue-500 focus:outline-none hover:bg-slate-200 cursor-pointer"
+          >
+            <option value="">Select Your Branch</option>
+          </select>
+          <div class="h-[20px] text-red-500 text-sm"></div>
+          <div class="sm:absolute sm:mt-0 bottom-[20px] flex flex-col gap-2">
+            <div>
+              <button
+                id="btnAdd"
+                class="mt-2 font-bold bg-green-300 hover:text-[white] py-1 px-7 rounded hover:bg-green-800 cursor-pointer"
+              >
+                Add <i class="bi bi-person-plus-fill"></i>
+              </button>
+              <button
+                id="btnShowAll"
+                class="mt-2 font-bold bg-blue-300 hover:text-[white] py-1 px-7 rounded hover:bg-blue-800 cursor-pointer"
+              >
+                Show All <i class="bi bi-border-style"></i>
+              </button>
+            </div>
+            <div id="searchZoneDIV" class="flex w-[100%]">
+              <input
+                placeholder="Search With CINE"
+                id="searchZone"
+                type="search"
+                class="border border-yellow-700 bg-yellow-100 w-[90%] outline-none px-2 focus:border-green-500 hover:bg-slate-200 cursor-pointer"
+              />
+              <button
+                id="search"
+                class="bg-yellow-500 w-[10%] hover:bg-slate-500 hover:text-white"
+              >
+                <i class="bi bi-binoculars"></i>
+              </button>
+            </div>
+            <div class="h-[20px] text-red-500 text-sm"></div>
+          </div>
+        </div>
+      </form>
+    </header>
+    <main
+      class="border border-slate-600 sm:w-[80%] w-[95%] flex flex-col rounded gap-2 p-2 h-[50%]"
+    >
+      <div class="w-[100%] flex justify-center h-[50%] overflow-auto">
+        <table
+          class="table-auto border-collapse border border-slate-500 w-[100%]"
+        >
+          <caption class="caption-top">
+            Table to Edit One Stagiaire Notes.
+          </caption>
+          <thead>
+            <th class="border border-slate-600">CINE</th>
+            <th class="border border-slate-600">Name</th>
+            <th class="border border-slate-600">Gender</th>
+            <th class="border border-slate-600">Branch</th>
+            <th>
+              <select
+                name="modules"
+                id="modules"
+                class="border border-orange-300 bg-orange-100 rounded font-normal cursor-pointer hover:bg-slate-200 outline-none"
+              >
+                <option value="">Select Module</option>
+              </select>
+            </th>
+            <th class="border border-slate-600">Action</th>
+          </thead>
+          <tbody id="tbodyEdit"></tbody>
+        </table>
+      </div>
+      <div class="w-[100%] flex justify-center h-[50%] overflow-auto">
+        <table
+          class="table-auto border-collapse border border-slate-500 w-[100%]"
+        >
+          <caption class="caption-top">
+            Table to Display Notes Of All Stagiaires.
+          </caption>
+          <thead>
+            <th class="border border-slate-600">CINE</th>
+            <th class="border border-slate-600">Name</th>
+            <th class="border border-slate-600">Gender</th>
+            <th class="border border-slate-600">Branch</th>
+            <th class="border border-slate-600">Notes</th>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
